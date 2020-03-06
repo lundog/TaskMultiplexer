@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskMultiplexer", "TaskMultiplexer\TaskMultiplexer.csproj", "{876E101A-B728-419C-8739-DDB0ABEAF5C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskMultiplexer.Tests", "TaskMultiplexer.Tests\TaskMultiplexer.Tests.csproj", "{04508CB8-5801-4CAB-ABC0-5E719FA2798B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{876E101A-B728-419C-8739-DDB0ABEAF5C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{876E101A-B728-419C-8739-DDB0ABEAF5C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{876E101A-B728-419C-8739-DDB0ABEAF5C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{876E101A-B728-419C-8739-DDB0ABEAF5C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04508CB8-5801-4CAB-ABC0-5E719FA2798B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04508CB8-5801-4CAB-ABC0-5E719FA2798B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04508CB8-5801-4CAB-ABC0-5E719FA2798B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04508CB8-5801-4CAB-ABC0-5E719FA2798B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D88F203-CF0C-4967-BEE1-248B20351B58}
+	EndGlobalSection
+EndGlobal
