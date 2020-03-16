@@ -11,7 +11,7 @@ namespace TaskMultiplexing.Tests
     public class TaskMultiplexerTests
     {
 		[TestMethod]
-		public void Get_SlowAsyncValueFactory_InvokesOnce()
+		public void GetMultiplexed_SlowAsyncValueFactory_InvokesOnce()
 		{
 			var taskMultiplexer = new TaskMultiplexer<int, string>();
 			int valueFactoryInvocationCount = 0;
@@ -22,13 +22,13 @@ namespace TaskMultiplexing.Tests
 				return x.ToString();
 			};
 
-			ThreadHelpers.InvokeThreads(10, () => taskMultiplexer.Get(1, valueFactory).Wait());
+			ThreadHelpers.InvokeThreads(10, () => taskMultiplexer.GetMultiplexed(1, valueFactory).Wait());
 
 			Assert.AreEqual(1, valueFactoryInvocationCount);
 		}
 
 		[TestMethod]
-		public void Get_SlowSyncValueFactory_InvokesOnce()
+		public void GetMultiplexed_SlowSyncValueFactory_InvokesOnce()
 		{
 			var taskMultiplexer = new TaskMultiplexer<int, string>();
 			int valueFactoryInvocationCount = 0;
@@ -39,13 +39,13 @@ namespace TaskMultiplexing.Tests
 				return Task.FromResult(x.ToString());
 			};
 
-			ThreadHelpers.InvokeThreads(10, () => taskMultiplexer.Get(1, valueFactory).Wait());
+			ThreadHelpers.InvokeThreads(10, () => taskMultiplexer.GetMultiplexed(1, valueFactory).Wait());
 
 			Assert.AreEqual(1, valueFactoryInvocationCount);
 		}
 
 		[TestMethod]
-		public void GetBatch_SlowAsyncValueFactory_InvokesMinimum()
+		public void GetMultiplexedBatch_SlowAsyncValueFactory_InvokesMinimum()
 		{
 			var taskMultiplexer = new TaskMultiplexer<int, string>();
 			int valueFactoryInvocationCount = 0;
@@ -66,7 +66,7 @@ namespace TaskMultiplexing.Tests
 				var key1 = Interlocked.Increment(ref threadIndex) % 5;
 				var key2 = key1 + 5;
 				var keys = new[] { key1, key2 };
-				taskMultiplexer.Get(keys, valueFactory).Wait();
+				taskMultiplexer.GetMultiplexed(keys, valueFactory).Wait();
 			});
 
 			Assert.AreEqual(5, valueFactoryInvocationCount);

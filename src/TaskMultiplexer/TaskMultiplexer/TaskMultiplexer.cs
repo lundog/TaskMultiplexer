@@ -10,7 +10,7 @@ namespace TaskMultiplexing
 	{
 		private ConcurrentDictionary<TKey, Lazy<Task<IDictionary<TKey, T>>>> Tasks { get; } = new ConcurrentDictionary<TKey, Lazy<Task<IDictionary<TKey, T>>>>();
 
-		public async Task<T> Get(TKey key, Func<TKey, Task<T>> valueFactory)
+		public async Task<T> GetMultiplexed(TKey key, Func<TKey, Task<T>> valueFactory)
 		{
 			var valuesTask = Tasks.GetOrAdd(key, k => CreateLazyValuesTask(k, valueFactory));
 			var values = await valuesTask.Value.ConfigureAwait(false);
@@ -18,7 +18,7 @@ namespace TaskMultiplexing
 			return value;
 		}
 
-		public async Task<IDictionary<TKey, T>> Get(IEnumerable<TKey> keys, Func<ICollection<TKey>, Task<IDictionary<TKey, T>>> valueFactory)
+		public async Task<IDictionary<TKey, T>> GetMultiplexed(IEnumerable<TKey> keys, Func<ICollection<TKey>, Task<IDictionary<TKey, T>>> valueFactory)
 		{
 			var keysList = keys.ToList();
 			var values = new Dictionary<TKey, T>(keysList.Count);
@@ -34,7 +34,7 @@ namespace TaskMultiplexing
 				foreach (var key in keysList)
 				{
 					var valuesTask = Tasks.GetOrAdd(key, newValuesTask);
-					if (valuesTask == newValuesTask)
+					if (ReferenceEquals(valuesTask, newValuesTask))
 					{
 						if (newKeys == null)
 						{
