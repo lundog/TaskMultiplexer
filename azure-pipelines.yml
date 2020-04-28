@@ -1,0 +1,28 @@
+trigger:
+- none
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  solution: 'src/TaskMultiplexer/TaskMultiplexer.sln'
+  libProject: 'src/TaskMultiplexer/TaskMultiplexer/TaskMultiplexer.csproj'
+
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$(solution)'
+    arguments: '--configuration $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '$(solution)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '$(libProject)'
+    configuration: '$(buildConfiguration)'
+    nobuild: true
+    versioningScheme: 'off'
