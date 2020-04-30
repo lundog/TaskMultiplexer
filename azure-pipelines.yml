@@ -25,9 +25,11 @@ steps:
     packagesToPack: '$(libProject)'
     configuration: '$(buildConfiguration)'
     nobuild: true
+    includesymbols: true
     versioningScheme: 'off'
-- task: PublishBuildArtifacts@1
+- task: DotNetCoreCLI@2
   inputs:
-    PathtoPublish: '$(build.artifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'lundog-nuget'
