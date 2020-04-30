@@ -26,3 +26,8 @@ steps:
     configuration: '$(buildConfiguration)'
     nobuild: true
     versioningScheme: 'off'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(build.artifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
