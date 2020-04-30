@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
@@ -8,6 +8,7 @@
     <Description>A thread-safe helper to ensure that concurrent, key-based, async operations are referenced by shared Task objects. Use this library to prevent excessive concurrent I/O, such as cache stampedes.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>Task;Cache;Caching</PackageTags>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <RepositoryUrl>https://github.com/lundog/TaskMultiplexer</RepositoryUrl>
   </PropertyGroup>
 
