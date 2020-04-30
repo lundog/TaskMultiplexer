@@ -27,12 +27,9 @@ steps:
     nobuild: true
     includesymbols: true
     versioningScheme: 'off'
-- task: NuGetAuthenticate@0
-  inputs:
-    nuGetServiceConnections: 'lundog-nuget'
-- task: DotNetCoreCLI@2
+- task: NuGetCommand@2
   inputs:
     command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'lundog-nuget'
