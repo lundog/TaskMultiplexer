@@ -17,7 +17,7 @@ namespace TaskMultiplexing.Tests
 			int valueFactoryInvocationCount = 0;
 			Func<int, Task<string>> valueFactory = async x =>
 			{
-				await Task.Delay(500).ConfigureAwait(false);
+				await Task.Delay(5000).ConfigureAwait(false);
 				Interlocked.Increment(ref valueFactoryInvocationCount);
 				return x.ToString();
 			};
@@ -34,7 +34,7 @@ namespace TaskMultiplexing.Tests
 			int valueFactoryInvocationCount = 0;
 			Func<int, Task<string>> valueFactory = x =>
 			{
-				Thread.Sleep(500);
+				Thread.Sleep(5000);
 				Interlocked.Increment(ref valueFactoryInvocationCount);
 				return Task.FromResult(x.ToString());
 			};
@@ -51,7 +51,7 @@ namespace TaskMultiplexing.Tests
 			int valueFactoryInvocationCount = 0;
 			Func<ICollection<int>, Task<IDictionary<int, string>>> valueFactory = async keys =>
 			{
-				await Task.Delay(500).ConfigureAwait(false);
+				await Task.Delay(5000).ConfigureAwait(false);
 				Interlocked.Increment(ref valueFactoryInvocationCount);
 				var values = keys
 					.Distinct()
