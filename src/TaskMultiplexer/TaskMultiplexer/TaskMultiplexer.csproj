@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <PackageId>TaskMultiplexer</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Lundog</Authors>
     <Description>A thread-safe helper to ensure that concurrent, key-based, async operations are referenced by shared Task objects. Use this library to prevent excessive concurrent I/O, such as cache stampedes.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
