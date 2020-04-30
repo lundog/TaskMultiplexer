@@ -27,6 +27,9 @@ steps:
     nobuild: true
     includesymbols: true
     versioningScheme: 'off'
+- task: NuGetAuthenticate@0
+  inputs:
+    nuGetServiceConnections: 'lundog-nuget'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'push'
